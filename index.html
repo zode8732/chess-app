@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>gambit</title>
+        <meta name="description" content="A social networking platform for all chess players and fans">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/chessboard-1.0.0.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <header>
+            <nav>
+                <span id="logo">gambit</span>
+                <ul>
+                    <li><a href="index.html">Feed</a></li>
+                    <li><a href="#">Explore</a></li>
+                    <li><a href="#">My Games</a></li>
+                    <li><a href="create.html">Create</a></li>
+                </ul>
+                <div id="nav-avatar"></div>
+            </nav>
+        </header>
+        <main>
+            <div id="feed">
+                <article class="post-card">
+                    <header class="card-header">
+                        <div class="avatar"></div>
+                        <div class="card-user">
+                            <span class="username">kid97</span>
+                            <span class="post-time">3:00 AM</span>
+                        </div>
+                        <span class="opening-tag">Sicilian Defense</span>
+                    </header>
+
+                    <!-- Flex row: all three sit side by side -->
+                    <div class="card-content">
+
+                        <div class="board-thumb" id="boardy"></div>
+                        <!-- Fixed 200×200, flex-shrink: 0 so it never squishes -->
+
+                        <div class="card-body">
+                        <!-- flex: 1 — stretches to fill remaining space -->
+                        <span class="tournament">World Rapid Championship 2024</span>
+                        <p class="caption">Random opinion</p>
+                        <p class="ai-preview">Claude's thoughts</p>
+                        <div class="card-meta">
+                            <span>♡ 142</span>
+                            <span>◇ 38</span>
+                            <span>32 moves</span>
+                        </div>
+                        </div>
+
+                        <div class="media-stack">
+                        <!-- Optional images/videos attached to the post -->
+                        <div class="media-item"></div>
+                        <div class="media-item"></div>
+                        </div>
+                    </div>
+
+                    <!-- Full-width below the row -->
+                    <div class="move-bar">
+                        <div class="move-btns">
+                            <button id="btn-first">«</button>
+                            <button id="btn-prev">‹</button>
+                            <button id="btn-next">›</button>
+                            <button id="btn-last">»</button>
+                        </div>
+                        <span class="move-current">Bc4</span>
+                        <span class="move-indicator">4 / 32</span>
+                    </div>
+
+                </article>
+                <!-- next rec-->
+            </div>
+
+        </main>
+        <footer>
+            <!-- empty -->
+        </footer>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="js/chess.js"></script>
+        <script src="js/chessboard-1.0.0.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>

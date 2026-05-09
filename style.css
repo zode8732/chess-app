@@ -1,0 +1,275 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #0f0f0f;
+    color: #e8e8e8;
+    min-height: 100vh;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 24px;
+    height: 56px;
+    background: #1a1a1a;
+    border-bottom: 1px solid #2a2a2a;
+    position: sticky;
+    top: 0;
+}
+
+#logo {
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: -0.5;
+}
+
+nav ul {
+    display: flex;
+    gap: 32px;
+    list-style: none;
+}
+
+#nav-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #ccc;
+  cursor: pointer;
+}
+
+nav a {
+    text-decoration: none;
+    color: #aaa;
+    font-size: 0.9rem;
+}
+
+#feed {
+    max-width: 600px;
+    margin: 32px auto;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 0 16px;
+}
+
+.post-card {
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 12px;
+    width: 100%;
+    overflow: hidden;
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+}
+
+.card-header .avatar {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background-color: #ccc;
+}
+
+.card-header .username {
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.board-thumb {
+  width: 240px;
+  height: 240px;
+  flex-shrink: 0;
+  background: #d4a843;
+  border-radius: 4px;
+}
+
+#boardy > div {
+  border: none !important;
+  font-family: 'Inter', sans-serif !important;
+}
+
+.card-content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    padding: 12px;
+    width: 100%;
+    background-color: transparent;
+}
+
+.move-bar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 12px;
+    background: #1a1a1a;
+    border-top: 1px solid #2a2a2a;
+}
+
+.move-bar button {
+    background: none;
+    color: #e8e8e8;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 6px 14px;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.move-bar button:hover {
+    background-color: #f0f0f0;
+    color: #0f0f0f;
+}
+
+.move-current {
+  font-weight: 600;
+}
+
+.move-indicator {
+  margin-left: auto;     /* pushes it to the far right */
+  color: #888;
+  font-size: 0.85rem;
+}
+
+.card-body {
+    flex: 1;               /* takes all space between board and media */
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 12px 16px;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    color: #e8e8e8;
+}
+
+.media-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 120px;
+    flex-shrink: 0;        /* media column stays fixed width too */
+}
+
+.media-item {
+    width: 100%;
+    height: 80px;
+    background: #2a2a2a;   /* placeholder */
+    border-radius: 4px;
+}
+
+/* --- Card Body Text --- */
+
+.tournament {
+  font-size: 0.8rem;
+  color: #888;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.caption {
+  font-size: 0.95rem;
+}
+
+.ai-preview {
+  font-size: 0.85rem;
+  color: #aaa;
+  font-style: italic;
+}
+
+.card-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 0.85rem;
+  color: #888;
+  margin-top: auto;      /* pins meta to the bottom of card-body */
+}
+
+.create-container {
+    max-width: 720px;
+    margin: 32px auto;
+    padding: 0 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.tab-bar {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+}
+
+.tab-bar button {
+    align-items: center;
+}
+
+.tab {
+    background: #1a1a1a;
+    color: #e8e8e8;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    padding: 8px 20px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.tab.active {
+    background: #2a2a2a;
+    border-color: #e8e8e8;
+}
+
+.tab-panel {
+    display: none;
+}
+
+.tab-panel.active {
+    display: block;
+}
+
+.tab-panel textarea,
+.tab-panel input {
+    width: 100%;
+    background: #1a1a1a;
+    border: 1px solid #2a2a2a;
+    border-radius: 8px;
+    color: #e8e8e8;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    padding: 12px;
+    box-sizing: border-box;
+}
+
+.tab-panel textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.create-bottom {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.post-body {
+    width: 100%;
+    height: 240px;
+    background: transparent;
+    border: none;
+    color: #e8e8e8;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9rem;
+    resize: none;
+    outline: none;
+}

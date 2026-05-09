@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Post – gambit</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="css/chessboard-1.0.0.css">
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    </head>
+    <body>
+        <nav>
+            <span id="logo">gambit</span>
+            <ul>
+                <li><a href="index.html">Feed</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">My Games</a></li>
+                <li><a href="create.html">Create</a></li>
+            </ul>
+            <div id="nav-avatar"></div>
+        </nav>
+
+        <main class="create-container">
+            <!-- Tab bar -->
+            <div class="tab-bar">
+                <button class="tab active" data-tab="pgn">PGN</button>
+                <button class="tab" data-tab="url">Lichess URL</button>
+                <button class="tab" data-tab="fen">FEN</button>
+            </div>
+            <!-- Tab panels -->
+            <div class="tab-panel active" id="tab-pgn">
+                <textarea id="pgn-input" placeholder="Paste PGN here..."></textarea>
+                <button id="pgn-load">Load</button>
+            </div>
+            <div class="tab-panel" id="tab-url">
+                <input type="text" placeholder="https://lichess.org/abc123">
+            </div>
+            <div class="tab-panel" id="tab-fen">
+                <input type="text" placeholder="Paste FEN here...">
+            </div>
+            <!-- Board preview + post body -->
+            <div class="create-bottom">
+                <div class="board-thumb" id="board-preview">
+                </div>
+                <div class="card-body">
+                    <textarea class="post-body" placeholder="What do you want to say about this position?"></textarea>
+                </div>
+            </div>
+
+        </main>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="js/chess.js"></script>
+        <script src="js/chessboard-1.0.0.js"></script>
+        <script>
+            const tabs = document.querySelectorAll('.tab');
+            const panels = document.querySelectorAll('.tab-panel');
+
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach(t => t.classList.remove('active'));
+                    panels.forEach(p => p.classList.remove('active'));
+
+                    tab.classList.add('active');
+                    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
+                });
+            });
+
+            let board = null;
+            const chess = new Chess();
+
+            document.getElementById('pgn-load').addEventListener('click', () => {
+                const pgn = document.getElementById('pgn-input').value;
+                const valid = chess.load_pgn(pgn);
+
+                if (!valid) {
+                    alert('Invalid PGN — double check your input.');
+                    return;
+                }
+
+                if (board === null) {
+                    board = Chessboard('board-preview', {
+                        position: chess.fen(),
+                        pieceTheme: 'img/chesspieces/wikipedia/{piece}.png'
+                    });
+                } else {
+                    board.position(chess.fen());
+                }
+            });
+
+        </script>
+        
+    </body>
+</html>
