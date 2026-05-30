@@ -17,7 +17,9 @@
                 <li><a href="#">My Games</a></li>
                 <li><a href="create.html">Create</a></li>
             </ul>
-            <div id="nav-avatar"></div>
+            <div id="nav-avatar">
+                <img src="tkl_temp_profile.jpg">
+            </div>
         </nav>
 
         <main class="create-container">
@@ -30,7 +32,6 @@
             <!-- Tab panels -->
             <div class="tab-panel active" id="tab-pgn">
                 <textarea id="pgn-input" placeholder="Paste PGN here..."></textarea>
-                <button id="pgn-load">Load</button>
             </div>
             <div class="tab-panel" id="tab-url">
                 <input type="text" placeholder="https://lichess.org/abc123">
@@ -38,6 +39,19 @@
             <div class="tab-panel" id="tab-fen">
                 <input type="text" placeholder="Paste FEN here...">
             </div>
+            <button id="load"
+                    style="align-items: center;
+                            background: #2a2a2a;
+                            color: #e8e8e8;
+                            border: 4px solid #2a2a2a;
+                            border-radius: 8px;
+                            padding: 8px 20px;
+                            font-family: 'Inter', sans-serif;
+                            font-size: 0.9rem;
+                            cursor: pointer;
+                            border-color: #0f0326;
+                            ">
+                Load</button>
             <!-- Board preview + post body -->
             <div class="create-bottom">
                 <div class="board-thumb" id="board-preview">
@@ -51,43 +65,6 @@
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="js/chess.js"></script>
         <script src="js/chessboard-1.0.0.js"></script>
-        <script>
-            const tabs = document.querySelectorAll('.tab');
-            const panels = document.querySelectorAll('.tab-panel');
-
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    tabs.forEach(t => t.classList.remove('active'));
-                    panels.forEach(p => p.classList.remove('active'));
-
-                    tab.classList.add('active');
-                    document.getElementById('tab-' + tab.dataset.tab).classList.add('active');
-                });
-            });
-
-            let board = null;
-            const chess = new Chess();
-
-            document.getElementById('pgn-load').addEventListener('click', () => {
-                const pgn = document.getElementById('pgn-input').value;
-                const valid = chess.load_pgn(pgn);
-
-                if (!valid) {
-                    alert('Invalid PGN — double check your input.');
-                    return;
-                }
-
-                if (board === null) {
-                    board = Chessboard('board-preview', {
-                        position: chess.fen(),
-                        pieceTheme: 'img/chesspieces/wikipedia/{piece}.png'
-                    });
-                } else {
-                    board.position(chess.fen());
-                }
-            });
-
-        </script>
-        
+        <script src="create.js"></script> 
     </body>
 </html>

@@ -23,6 +23,13 @@ nav {
     top: 0;
 }
 
+img {
+    max-height: 100%;
+    max-width: 100%;
+    border-radius: 10%;
+    border: 1px ;
+}
+
 #logo {
     font-size: 1.2rem;
     font-weight: 700;
